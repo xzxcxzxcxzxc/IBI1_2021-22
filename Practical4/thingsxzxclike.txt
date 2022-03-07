@@ -1,8 +1,4 @@
-I like 1
-<<<<<<< HEAD
-i do not like 5
-i like 7
-=======
-i do not like 2
-i like 4
->>>>>>> lzy
+I like playing computer games
+I like playing Rubik's cube
+I like learning computer programming 
+
