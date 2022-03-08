@@ -9,3 +9,13 @@ This is an example file for reflection in IBI1_2019-20.
 During this course, I have learnt version control, how to navigate Unix-like systems and how to write simple programs in Python.
 
 I have also learnt to write careful instructions when communicating online!
+
+==============================================================================================================================================================================================
+
+Although I had done everything in the practical, I think it is hard for me to understand the meanning of each commands. It took me alomst 4 hours to finish the first part of the practical. 
+
+When I type "git commit -m 'balabala'", it will warn me that "please tell me who you are", and I cannot find help in the guide. So I had to search in the internet for help.
+
+I still don't know what is "git fetch" and "git pull". 
+
+Another question is after I type "git merge balabala", how can I read previous message?
