@@ -13,9 +13,10 @@ if d/c > e/b:       # compare the rate in 2020 and 2021
     print('rate in 2020 is much bigger than 2021')
 else:
     print('rate in 2021 is much bigger than 2020')
-X = 'a5fc'
-Y = 'abc'
+X = True
+Y = False
 W = X and Y
 print(W)
+Y = True
 W = Y and X
 print(W)
