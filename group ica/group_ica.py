@@ -37,41 +37,61 @@ def codon_list(origin):
 def mutationConsequences():
     pass                            #没看懂题目，不好意思
 
-def synonymosCalcilator(origin):
+def synonymosCalculator(origin):
     synonymous = 0
     nonsynonymous = 0
-    vulnerability = 0
-    transversionsSynonymous = 0
-    transversionsNonsynonymous = 0
     for i in range(len(origin)):
         for j in range(3):
-            mutation = []
-            for a in range(3):              #TODO字符串可直接转为列表
-                mutation.append(origin[i][a]) 
+            mutation = list(origin[i]) 
             for h in basic:
                 if origin[i][j] == h:
                     continue
                 else:
                     mutation[j] = h
-                    print(''.join(mutation))
                     if codon_table[''.join(mutation)] == codon_table[origin[i]]:
                         synonymous += 1
-                        if (h in 'AG' and origin[i][j] in 'CT') or (h in 'CT' and origin[i][j] in 'AG'):
-                            transversionsSynonymous += 1
                     else:
                         nonsynonymous += 1
-                        if (h in 'AG' and origin[i][j] in 'CT') or (h in 'CT' and origin[i][j] in 'AG'):
-                            transversionsNonsynonymous += 1
+    return synonymous,nonsynonymous
+
+def vulnerabilityCalculator(origin):
+    vulnerability = 0
+    for i in range(len(origin)):
+        for j in range(3):
+            mutation = list(origin[i]) 
+            for h in basic:
+                if origin[i][j] == h:
+                    continue
+                else:
+                    mutation[j] = h
                     if codon_table[''.join(mutation)] == 'stop' and codon_table[origin[i]] != 'stop':
                         vulnerability += 1    
-    return synonymous,nonsynonymous,vulnerability,transversionsSynonymous,transversionsNonsynonymous
+    return vulnerability
 
+def transitionsCalculator(origin):
+    transversionsSynonymous = 0
+    transversionsNonsynonymous = 0
+    for i in range(len(origin)):
+        for j in range(3):
+            mutation = list(origin[i]) 
+            for h in basic:
+                if origin[i][j] == h:
+                    continue
+                else:
+                    mutation[j] = h
+                    if (h in 'AG' and origin[i][j] in 'CT') or (h in 'CT' and origin[i][j] in 'AG'):
+                        if codon_table[''.join(mutation)] == codon_table[origin[i]]:
+                            transversionsSynonymous += 1
+                        else:
+                            transversionsNonsynonymous += 1                       
+    return transversionsSynonymous,transversionsNonsynonymous    
 
 def additionalFunction():       #额外还没想法，下次一定.
     pass
 
-
 dnaOrigin = input()
 codon_list(dnaOrigin)
-a,b,c,d,f = synonymosCalcilator(codon)
-print(' synonymous:',a,'\n nonsynonymous:',b,'\n vulnerability',c,'\n transversionsSynonymous:',d,'\n transversionsNonsynonymous:',f)
+a,b = synonymosCalculator(codon)
+c = vulnerabilityCalculator(codon)
+d,e = transitionsCalculator(codon)
+print(' synonymous:',a,'\n nonsynonymous:',b,'\n vulnerability',c,'\n transversionsSynonymous:',d,'\n transversionsNonsynonymous:',e)
