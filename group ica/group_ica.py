@@ -20,36 +20,35 @@ codon_table = {                                             #DNA codon
     'GGT':'Gly','GGC':'Gly','GGA':'Gly','GGG':'Gly',
 }
 
-def codon_list(origin):
-    global codon
+def codon_list(origin):                                         #find the initiation codon, each of the codon is placed in a list.
     for i in range(len(origin)):
         if origin[i:i+3] == 'ATG': 
-            for j in range(i,len(origin),3):
-                codon.append(origin[j:j+3])
+            for j in range(i,len(origin),3):                    
+                codon.append(origin[j:j+3])                     
                 try:
                     if codon_table[origin[j:j+3]] == 'stop':
                         break
-                except KeyError:
+                except KeyError:                                #if the input is not a multiple of three，then exit and ask to re-enter
                     return False
             print(codon)
             break
-    return True                   #TODO假如序列中存在ATG，可删除并修改。
+    return True                                                 #TODO假如序列中存在ATG，可删除并修改。
 
 def mutationConsequences():
-    pass                            #没看懂题目，不好意思
+    pass                                                        #没看懂题目，不好意思
 
 def synonymosCalculator(origin):
     synonymous = 0
     nonsynonymous = 0
     for i in range(len(origin)):
         for j in range(3):
-            mutation = list(origin[i]) 
+            mutation = list(origin[i])                          #Divide the codon into three bases and store each in a list
             for h in basic:
-                if origin[i][j] == h:
+                if origin[i][j] == h:                           #if the mutation do not occor(e.g. A->A), then just go to next loop.
                     continue
                 else:
-                    mutation[j] = h
-                    if codon_table[''.join(mutation)] == codon_table[origin[i]]:
+                    mutation[j] = h                             #mutation occor
+                    if codon_table[''.join(mutation)] == codon_table[origin[i]]:                    #if the amino acid changed, then synonymous + 1
                         synonymous += 1
                     else:
                         nonsynonymous += 1
@@ -65,7 +64,7 @@ def vulnerabilityCalculator(origin):
                     continue
                 else:
                     mutation[j] = h
-                    if codon_table[''.join(mutation)] == 'stop' and codon_table[origin[i]] != 'stop':
+                    if codon_table[''.join(mutation)] == 'stop' and codon_table[origin[i]] != 'stop':   #if a truncating mutation occor, vulnerability + 1
                         vulnerability += 1    
     return vulnerability
 
@@ -80,7 +79,7 @@ def transitionsCalculator(origin):
                     continue
                 else:
                     mutation[j] = h
-                    if (h in 'AG' and origin[i][j] in 'CT') or (h in 'CT' and origin[i][j] in 'AG'):
+                    if (h in 'AG' and origin[i][j] in 'CT') or (h in 'CT' and origin[i][j] in 'AG'):    #Determine whether it is transversions mutation
                         if codon_table[''.join(mutation)] == codon_table[origin[i]]:
                             transversionsSynonymous += 1
                         else:
