@@ -1,5 +1,4 @@
 #!python3
-
 basic = 'ATCG'
 
 codon_table = {                                             #DNA codon
@@ -21,18 +20,20 @@ codon_table = {                                             #DNA codon
     'GGT':'Gly','GGC':'Gly','GGA':'Gly','GGG':'Gly',
 }
 
-codon = []
-
 def codon_list(origin):
     global codon
     for i in range(len(origin)):
-        if origin[i:i+3] == 'ATG':  #加一个是否为三的判断
+        if origin[i:i+3] == 'ATG': 
             for j in range(i,len(origin),3):
                 codon.append(origin[j:j+3])
-                if codon_table[origin[j:j+3]] == 'stop':
-                    break
+                try:
+                    if codon_table[origin[j:j+3]] == 'stop':
+                        break
+                except KeyError:
+                    return False
             print(codon)
-            break                   #TODO假如序列中存在ATG，可删除并修改。
+            break
+    return True                   #TODO假如序列中存在ATG，可删除并修改。
 
 def mutationConsequences():
     pass                            #没看懂题目，不好意思
@@ -73,7 +74,7 @@ def transitionsCalculator(origin):
     transversionsNonsynonymous = 0
     for i in range(len(origin)):
         for j in range(3):
-            mutation = list(origin[i]) 
+            mutation = list(origin[i])
             for h in basic:
                 if origin[i][j] == h:
                     continue
@@ -83,15 +84,21 @@ def transitionsCalculator(origin):
                         if codon_table[''.join(mutation)] == codon_table[origin[i]]:
                             transversionsSynonymous += 1
                         else:
-                            transversionsNonsynonymous += 1                       
-    return transversionsSynonymous,transversionsNonsynonymous    
+                            transversionsNonsynonymous += 1
+    return transversionsSynonymous,transversionsNonsynonymous
 
 def additionalFunction():       #额外还没想法，下次一定.
     pass
 
-dnaOrigin = input()
-codon_list(dnaOrigin)
-a,b = synonymosCalculator(codon)
-c = vulnerabilityCalculator(codon)
-d,e = transitionsCalculator(codon)
-print(' synonymous:',a,'\n nonsynonymous:',b,'\n vulnerability',c,'\n transversionsSynonymous:',d,'\n transversionsNonsynonymous:',e)
+while True:
+    codon = []
+    dnaOrigin = input('Please enter the DNA sequence: ').upper()
+    judge = codon_list(dnaOrigin)
+    if judge and codon != []:
+        synonymous,nonsynonymous = synonymosCalculator(codon)
+        vulnerability = vulnerabilityCalculator(codon)
+        transversionsSynonymous,transversionsNonsynonymous = transitionsCalculator(codon)
+        print(' synonymous:',synonymous,'\n nonsynonymous:',nonsynonymous,'\n vulnerability',vulnerability)
+        print(' transversionsSynonymous:',transversionsSynonymous,'\n transversionsNonsynonymous:',transversionsNonsynonymous)
+    else:
+        print('input is not a complete sequence')
