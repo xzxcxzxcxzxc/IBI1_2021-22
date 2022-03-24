@@ -13,7 +13,7 @@ codon_table = {                                             #DNA codon
     'CGT':'Arg','CGC':'Arg','CGA':'Arg','CGG':'Arg',
     'ATT':'Ile','ATC':'Ile','ATA':'Ile','ATG':'Met',
     'ACT':'Thr','ACC':'Thr','ACA':'Thr','ACG':'Thr',
-    'AAcodonT':'Asn','AAC':'Asn','AAA':'Lys','AAG':'Lys',
+    'AAT':'Asn','AAC':'Asn','AAA':'Lys','AAG':'Lys',
     'AGT':'Ser','AGC':'Ser','AGA':'Arg','AGG':'Arg',
     'GTT':'Val','GTC':'Val','GTA':'Val','GTG':'Val',
     'GCT':'Ala','GCC':'Ala','GCA':'Ala','GCG':'Ala',
