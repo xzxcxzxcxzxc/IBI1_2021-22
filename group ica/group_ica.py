@@ -13,7 +13,7 @@ codon_table = {                                             #DNA codon
     'CGT':'Arg','CGC':'Arg','CGA':'Arg','CGG':'Arg',
     'ATT':'Ile','ATC':'Ile','ATA':'Ile','ATG':'Met',
     'ACT':'Thr','ACC':'Thr','ACA':'Thr','ACG':'Thr',
-    'AAT':'Asn','AAC':'Asn','AAA':'Lys','AAG':'Lys',
+    'AAcodonT':'Asn','AAC':'Asn','AAA':'Lys','AAG':'Lys',
     'AGT':'Ser','AGC':'Ser','AGA':'Arg','AGG':'Arg',
     'GTT':'Val','GTC':'Val','GTA':'Val','GTG':'Val',
     'GCT':'Ala','GCC':'Ala','GCA':'Ala','GCG':'Ala',
@@ -29,8 +29,9 @@ def codon_list(origin):
         if origin[i:i+3] == 'ATG':  #加一个是否为三的判断
             for j in range(i,len(origin),3):
                 codon.append(origin[j:j+3])
-                if codon_table[origin[i:i+3]] == 'stop':
+                if codon_table[origin[j:j+3]] == 'stop':
                     break
+            print(codon)
             break                   #TODO假如序列中存在ATG，可删除并修改。
 
 def mutationConsequences():
