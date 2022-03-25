@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 a = input('please enter your mark:(use space between each marks)')
 b = a.split(' ')                #devide each mark into list
-marks = []
+marks = []                      #create a empty list
 for i in range(len(b)):
     marks.append(int(b[i]))     #changethe str into int
 marks.sort()                    #sort marks
