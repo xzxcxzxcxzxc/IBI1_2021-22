@@ -1,10 +1,14 @@
 import matplotlib.pyplot as plt
 import numpy as np
-marks = [45,36,86,57,53,92,65,45]
-marks.sort()
+a = input('please enter your mark:(use space between each marks)')
+b = a.split(' ')                #devide each mark into list
+marks = []
+for i in range(len(b)):
+    marks.append(int(b[i]))     #changethe str into int
+marks.sort()                    #sort marks
 print(marks)
-plt.boxplot(marks)
+plt.boxplot(marks)          
 plt.show()
-mean = np.mean(marks)
+mean = np.mean(marks)           #calculate the mean value of the marks
 print(mean)
-print('pass') if mean > 60 else print('fail an exam ')
+print('pass') if mean > 60 else print('fail an exam ')  #print pass if mean>60  else print fail an exam
