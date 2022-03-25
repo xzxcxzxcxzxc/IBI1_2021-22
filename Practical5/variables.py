@@ -15,8 +15,8 @@ else:
     print('rate in 2021 is much bigger than 2020')
 X = True
 Y = False
-W = X and Y
+W = X and Y        #try the 'and' and 'or'
 print(W)
 Y = True
-W = Y and X
+W = Y or X
 print(W)
