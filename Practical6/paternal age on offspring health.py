@@ -8,6 +8,6 @@ plt.scatter(pair.keys(),pair.values(),c='g')
 plt.title('The correspondence ')
 plt.xlabel('paternal_age')
 plt.ylabel('chd')
-plt.show()                                              #shoe the plot    
+plt.show()                                              #show the plot    
 age = input('please ener the age you want to search:')  #input the age
 print(age,pair[int(age)])                

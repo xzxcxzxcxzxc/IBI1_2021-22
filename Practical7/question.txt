@@ -1,0 +1,6 @@
+How have new cases and new deaths developed over time in the world?
+
+in my code, Lines 26 to 32 assignment the number of new deaths and infections worldwide to the variables 'totalDeathNum' and 'totalNewCases'. 
+Lines 55 to 61 is to prefect the plot.
+
+discussion: compare with new cases in China and world, we can find that before 2020-01-21, the infection basically only happens in China, after that, the COVID-19 spread all over the world quickly except China.
