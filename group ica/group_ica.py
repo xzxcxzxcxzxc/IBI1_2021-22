@@ -3,8 +3,8 @@ basic = 'ATCG'
 
 codon_table = {                                             #DNA codon
     'TTT':'Phe','TTC':'Phe','TTA':'Leu','TTG':'Leu',
-    'TCT':'SER','TCC':'SER','TCA':'SER','TCG':'SER',
-    'TAT':'Tyr','TAC':'TyR','TAA':'stop','TAG':'stop',
+    'TCT':'Ser','TCC':'Ser','TCA':'Ser','TCG':'Ser',
+    'TAT':'Tyr','TAC':'Tyr','TAA':'stop','TAG':'stop',
     'TGT':'Cys','TGC':'Cys','TGA':'stop','TGG':'Trp',
     'CTT':'Leu','CTC':'Leu','CTA':'Leu','CTG':'Leu',
     'CCT':'Pro','CCC':'Pro','CCA':'Pro','CCG':'Pro',
@@ -52,6 +52,7 @@ def synonymosCalculator(origin):
                         synonymous += 1
                     else:
                         nonsynonymous += 1
+                    print(''.join(mutation), origin[i])
     return synonymous,nonsynonymous
 
 def vulnerabilityCalculator(origin):
