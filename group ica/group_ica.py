@@ -102,3 +102,5 @@ while True:
         print(' transversionsSynonymous:',transversionsSynonymous,'\n transversionsNonsynonymous:',transversionsNonsynonymous)
     else:
         print('input is not a complete sequence')
+
+    

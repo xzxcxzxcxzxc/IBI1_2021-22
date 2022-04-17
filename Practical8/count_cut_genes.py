@@ -1,9 +1,9 @@
-import re,os
+import re
 name = input('Please input the fastq name:')
-fileName = open('./'+ name)
-newFile = open('./new_'+ name,'w')
+fileName = open('./' + name)
+newFile = open('./new_' + name,'w')
 seq = fileName.read()
-pattern = re.compile('(.*?)_.*?Acc:.*?](.*?)>',re.S)
+pattern = re.compile('>.*?gene:(.*?) .*?Acc:.*?]\s([ATCG\n]{10,})',re.S)
 seq_list = pattern.findall(seq)
 for i in range(len(seq_list)):
     if 'GAATTC' in seq_list[i][1]:
