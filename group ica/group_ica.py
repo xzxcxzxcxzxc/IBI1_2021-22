@@ -34,8 +34,18 @@ def codon_list(origin):                                         #find the initia
             break
     return True                                                 #TODO假如序列中存在ATG，可删除并修改。
 
-def mutationConsequences():
-    pass                                                        #没看懂题目，不好意思
+def mutationConsequences(origin):
+    initiationSite = True
+    mutationPlace = int(input('please input the mutation place'))
+    mutationCodon = input('please input mutated base').upper()
+    a = mutationPlace // 3
+    if a == 0 :
+        initiationSite = False
+    b = mutationPlace % 3 - 1
+    mutation = list(origin[a])
+    mutation[b] = mutationCodon
+    return codon_table[''.join(mutation)],codon_table[origin[a]],origin[a][b],mutationCodon,initiationSite
+
 
 def synonymosCalculator(origin):
     synonymous = 0
@@ -52,7 +62,6 @@ def synonymosCalculator(origin):
                         synonymous += 1
                     else:
                         nonsynonymous += 1
-                    print(''.join(mutation), origin[i])
     return synonymous,nonsynonymous
 
 def vulnerabilityCalculator(origin):
@@ -87,20 +96,34 @@ def transitionsCalculator(origin):
                             transversionsNonsynonymous += 1
     return transversionsSynonymous,transversionsNonsynonymous
 
-def additionalFunction():       #额外还没想法，下次一定.
-    pass
+def additionalFunction(origin):       #额外还没想法，下次一定.
+    codonContent = {'A':0,'T':0,'C':0,'G':0}
+    c = 0
+    for a in codon:
+        for b in a:
+            codonContent[b] += 1
+            c += 1
+    hydrogenBond = (codonContent['A'] + codonContent['T']) * 2 + (codonContent['G'] + codonContent['C']) * 3
+    rate = (codonContent['A'] + codonContent['T']) / c
+    return hydrogenBond,rate
 
 while True:
     codon = []
     dnaOrigin = input('Please enter the DNA sequence: ').upper()
     judge = codon_list(dnaOrigin)
     if judge and codon != []:
+        mutatedAmino,originAmino,originCodon,mutatedCodon,initiationSite = mutationConsequences(codon)
+        if initiationSite:
+            print(' origin amino acid is:',originAmino,'\n mutated amino acid is:', mutatedAmino,'\n the codon change from: ',originCodon,' to: ',mutatedCodon)
+        else:
+            print('Initial site is mutated')
         synonymous,nonsynonymous = synonymosCalculator(codon)
+        print(' synonymous:',synonymous,'\n nonsynonymous:',nonsynonymous)
         vulnerability = vulnerabilityCalculator(codon)
+        print(' vulnerability:',vulnerability)
         transversionsSynonymous,transversionsNonsynonymous = transitionsCalculator(codon)
-        print(' synonymous:',synonymous,'\n nonsynonymous:',nonsynonymous,'\n vulnerability',vulnerability)
         print(' transversionsSynonymous:',transversionsSynonymous,'\n transversionsNonsynonymous:',transversionsNonsynonymous)
+        hydrogenBond,rate = additionalFunction(codon)
+        print(' hydrogen bond:',hydrogenBond,'the rate of A and T is: ',rate)
     else:
         print('input is not a complete sequence')
-
-    
