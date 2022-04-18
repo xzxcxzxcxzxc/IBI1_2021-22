@@ -5,7 +5,7 @@ class Staff(object):
         self.location = c
         self.role = d
 
-a = Staff('young','robot','Edinburgh','faculty')
+a = Staff('Rob','Young','Edinburgh','faculty')
 
 print('His first name is:',a.firstName,'\nHis last name is:',a.lastName)
 print('His location is:',a.location,'\nHis role is:',a.role)
