@@ -1,0 +1,1 @@
+mystry_code's second line is changed to the 'it is used to create ten integer between 1 and 100 and output the last one    [1,100)'

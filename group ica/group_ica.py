@@ -123,7 +123,9 @@ while True:
         print(' vulnerability:',vulnerability)
         transversionsSynonymous,transversionsNonsynonymous = transitionsCalculator(codon)
         print(' transversionsSynonymous:',transversionsSynonymous,'\n transversionsNonsynonymous:',transversionsNonsynonymous)
+        print(' the rate of transversions nonsynonymous is: ',transversionsNonsynonymous/transversionsSynonymous)
+        print(' the rate of transitions nonsynonymous is: ',(nonsynonymous-transversionsNonsynonymous)/(synonymous-transversionsSynonymous))
         hydrogenBond,rate = additionalFunction(codon)
-        print(' hydrogen bond:',hydrogenBond,'the rate of A and T is: ',rate)
+        print(' hydrogen bond:',hydrogenBond,'\n the rate of A and T is: ',rate)
     else:
         print('input is not a complete sequence')

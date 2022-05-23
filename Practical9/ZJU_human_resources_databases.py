@@ -5,7 +5,8 @@ class Staff(object):
         self.location = c
         self.role = d
 
-a = Staff('Rob','Young','Edinburgh','faculty')
+    def output(self):
+        print(self.firstName,self.lastName,'is the',self.role,'of',self.location)
 
-print('His first name is:',a.firstName,'\nHis last name is:',a.lastName)
-print('His location is:',a.location,'\nHis role is:',a.role)
+a = Staff('Rob','Young','Edinburgh','faculty')
+a.output()

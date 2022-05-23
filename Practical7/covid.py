@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 covid_data = pd.read_csv("full_data.csv")
 location = covid_data.loc[:, 'location']
-print(covid_data.iloc[10:21, [0, 3]])
+print(covid_data.iloc[10:21, [0, 2]])
 rowNumAf = []
 rowNum = []
 rowNumWorld = []
@@ -54,10 +54,12 @@ plt.subplot(231)
 plt.boxplot(China_news, showfliers=False)
 plt.title('The boxplot of news cases in China')
 plt.ylabel('number of people')
+plt.xlabel('news cases in China')
 plt.subplot(234)
 plt.boxplot(China_deaths, showfliers=False)
 plt.title('The boxplot of deathes in China')
 plt.ylabel('number of people')
+plt.xlabel('deathes in China')
 plt.subplot(235)
 plt.title('New deaths in World')
 plt.plot(date, totalDeathNum, 'r', label='DeathNum')

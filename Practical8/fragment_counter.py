@@ -4,4 +4,4 @@ seq = 'ATGCAATCGACTACGATCAATCGAGGGCC'
 
 a = re.findall('GAATTC', seq)
 
-print(len(a) + 1)
+print('there will be',len(a) + 1,'seqs after cutting')
