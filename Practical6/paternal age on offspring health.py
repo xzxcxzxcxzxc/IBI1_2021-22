@@ -10,4 +10,5 @@ plt.xlabel('paternal_age')
 plt.ylabel('chd')
 plt.show()                                              #show the plot    
 age = input('please ener the age you want to search:')  #input the age
-print(age,pair[int(age)])                
+print(age,pair[int(age)])
+print(pair)

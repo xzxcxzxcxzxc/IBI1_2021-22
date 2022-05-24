@@ -7,7 +7,10 @@ for i in range(len(b)):
     marks.append(int(b[i]))     #changethe str into int
 marks.sort()                    #sort marks
 print(marks)
-plt.boxplot(marks)          
+plt.boxplot(marks) 
+plt.title('the boxplot of whole marks')
+plt.xlabel("your score")
+plt.ylabel("marks")         
 plt.show()
 mean = np.mean(marks)           #calculate the mean value of the marks
 print(mean)

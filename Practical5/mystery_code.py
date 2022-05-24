@@ -1,5 +1,5 @@
 # What does this piece of code do?
-# Answer:  it is used to create a integer between 1 and 100     [1,100)
+# Answer:  Selects ten random numbers between 1 and 100 and then print the last one
 # Import libraries
 # randint allows drawing a random number,
 # e.g. randint(1,5) draws a number between 1 and 5
